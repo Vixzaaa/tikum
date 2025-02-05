@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Pribadi</title>
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+            text-align: center;
+            background-color: #ffffff;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            font-weight: 700;
+        }
+        .thumbnail {
+            position: relative;
+            width: 90%; /* Lebih lebar agar lebih full */
+            max-width: 800px; /* Maksimal agar tidak terlalu besar di layar lebar */
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .thumbnail img {
+            width: 100%;
+            border-radius: 15px;
+            filter: grayscale(100%);
+        }
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+        .gallery .row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        .gallery .row.left {
+            justify-content: flex-start;
+        }
+        .gallery .row.right {
+            justify-content: flex-end;
+            flex-direction: row-reverse;
+        }
+        .gallery .row img {
+            width: 48%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            filter: grayscale(100%);
+            transition: transform 0.3s ease, filter 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery .row img:hover {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+        .gallery .row p {
+            width: 48%;
+            padding: 10px;
+            text-align: left;
+            font-size: 14px;
+            color: #555555;
+        }
+        h2 {
+            font-size: 28px;
+            margin-top: 20px;
+            color: #666666;
+        }
+        .description {
+            font-size: 16px;
+            color: #555555;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+        /* Popup Image */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+        }
+        .popup span {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function openPopup(src) {
+            document.getElementById("popup-img").src = src;
+            document.getElementById("popup").style.display = "flex";
+        }
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="thumbnail">
+        <img src="thumbnail.jpg" alt="Thumbnail">
+    </div>
+    <h2>shared gallery</h2>
+    <div class="description">
+        Don't be afraid of the camera because beautiful things cannot be seen again without its help
+    </div>
+    <div class="gallery">
+        <div class="row left">
+            <a href="photo_1_2025-02-05_12-42-36.jpg" download>
+                <img src="photo_1_2025-02-05_12-42-36.jpg" alt="Foto Kenangan 1" onclick="openPopup(this.src)">
+            </a>
+            <p>February 3, 2025</p>
+        </div>
+        <div class="row right">
+            <a href="photo_2_2025-02-05_12-42-36 - Salin.jpg" download>
+                <img src="photo_2_2025-02-05_12-42-36 - Salin.jpg" alt="Foto Kenangan 2" onclick="openPopup(this.src)">
+            </a>
+            <p>February 3, 2025.</p>
+        </div>
+        <div class="row left">
+            <a href="photo_2_2025-02-05_12-42-36.jpg" download>
+                <img src="photo_2_2025-02-05_12-42-36.jpg" alt="Foto Kenangan 3" onclick="openPopup(this.src)">
+            </a>
+            <p>February 3, 2025.</p>
+        </div>
+        <div class="row right">
+            <a href="photo_3_2025-02-05_12-42-36.jpg" download>
+                <img src="photo_3_2025-02-05_12-42-36.jpg" alt="Foto Kenangan 4" onclick="openPopup(this.src)">
+            </a>
+            <p>February 3, 2025.</p>
+        </div>
+        <div class="row left">
+            <a href="photo_4_2025-02-05_12-42-36.jpg" download>
+                <img src="photo_4_2025-02-05_12-42-36.jpg" alt="Foto Kenangan 5" onclick="openPopup(this.src)">
+            </a>
+            <p>February 3, 2025.</p>
+        </div>
+    </div>
+
+    <!-- Popup Container -->
+    <div id="popup" class="popup" onclick="closePopup()">
+        <span>&times;</span>
+        <img id="popup-img" src="" alt="Popup Image">
+    </div>
+</body>
+</html>
