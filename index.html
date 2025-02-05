@@ -16,8 +16,8 @@
         }
         .thumbnail {
             position: relative;
-            width: 90%; /* Lebih lebar agar lebih full */
-            max-width: 800px; /* Maksimal agar tidak terlalu besar di layar lebar */
+            width: 90%;
+            max-width: 800px;
             margin: 20px auto;
             border-radius: 15px;
             overflow: hidden;
@@ -92,10 +92,11 @@
             background: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
         .popup img {
             max-width: 90%;
-            max-height: 90%;
+            max-height: 80%;
             border-radius: 12px;
         }
         .popup span {
@@ -106,10 +107,26 @@
             color: white;
             cursor: pointer;
         }
+        .download-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .download-btn:hover {
+            background-color: #ddd;
+        }
     </style>
     <script>
         function openPopup(src) {
             document.getElementById("popup-img").src = src;
+            document.getElementById("download-btn").href = src;
             document.getElementById("popup").style.display = "flex";
         }
         function closePopup() {
@@ -128,41 +145,32 @@
     </div>
     <div class="gallery">
         <div class="row left">
-            <a href="photo_1_2025-02-05_12-42-36.jpg" download>
-                <img src="photo_1_2025-02-05_12-42-36.jpg" alt="Foto Kenangan 1" onclick="openPopup(this.src)">
-            </a>
+            <img src="photo_1_2025-02-05_12-42-36.jpg" alt="Foto Kenangan 1" onclick="openPopup(this.src)">
             <p>February 3, 2025</p>
         </div>
         <div class="row right">
-            <a href="photo_2_2025-02-05_12-42-36 - Salin.jpg" download>
-                <img src="photo_2_2025-02-05_12-42-36 - Salin.jpg" alt="Foto Kenangan 2" onclick="openPopup(this.src)">
-            </a>
+            <img src="photo_2_2025-02-05_12-42-36 - Salin.jpg" alt="Foto Kenangan 2" onclick="openPopup(this.src)">
             <p>February 3, 2025.</p>
         </div>
         <div class="row left">
-            <a href="photo_2_2025-02-05_12-42-36.jpg" download>
-                <img src="photo_2_2025-02-05_12-42-36.jpg" alt="Foto Kenangan 3" onclick="openPopup(this.src)">
-            </a>
+            <img src="photo_2_2025-02-05_12-42-36.jpg" alt="Foto Kenangan 3" onclick="openPopup(this.src)">
             <p>February 3, 2025.</p>
         </div>
         <div class="row right">
-            <a href="photo_3_2025-02-05_12-42-36.jpg" download>
-                <img src="photo_3_2025-02-05_12-42-36.jpg" alt="Foto Kenangan 4" onclick="openPopup(this.src)">
-            </a>
+            <img src="photo_3_2025-02-05_12-42-36.jpg" alt="Foto Kenangan 4" onclick="openPopup(this.src)">
             <p>February 3, 2025.</p>
         </div>
         <div class="row left">
-            <a href="photo_4_2025-02-05_12-42-36.jpg" download>
-                <img src="photo_4_2025-02-05_12-42-36.jpg" alt="Foto Kenangan 5" onclick="openPopup(this.src)">
-            </a>
+            <img src="photo_4_2025-02-05_12-42-36.jpg" alt="Foto Kenangan 5" onclick="openPopup(this.src)">
             <p>February 3, 2025.</p>
         </div>
     </div>
 
     <!-- Popup Container -->
-    <div id="popup" class="popup" onclick="closePopup()">
-        <span>&times;</span>
+    <div id="popup" class="popup">
+        <span onclick="closePopup()">&times;</span>
         <img id="popup-img" src="" alt="Popup Image">
+        <a id="download-btn" class="download-btn" download>Download</a>
     </div>
 </body>
 </html>
